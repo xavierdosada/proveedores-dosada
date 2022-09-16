@@ -1,8 +1,10 @@
 import "./NavBar.css";
+import "../CardWidget.jsx";
+import CardWidget from "../CardWidget";
 
 function NavBar() {
   return (
-    <div className="NavBar">
+    <nav className="NavBar">
         <h2>
           <strong>Proveduria</strong>
         </h2>
@@ -11,8 +13,10 @@ function NavBar() {
           <li>Productos</li>
           <li>Contacto</li>
         </ul>
-        
-    </div>
+        <div className="icon">
+          <a href="products"> < CardWidget /> </a>
+        </div>
+    </nav>
   );
 }
 
