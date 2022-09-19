@@ -1,0 +1,19 @@
+.countContainer {
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid orange;
+    border-radius: 20px;
+}
+
+.plusButton {
+    color: orange;
+    cursor: pointer;
+}
+
+.lessButton {
+    color: orange;
+    cursor: pointer;
+}
