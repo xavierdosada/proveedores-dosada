@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import "./ItemCount.css"
 
-function ItemCount(props) {
+function ItemCount({initial, stock}) {
 
-    const [count, setCount] = useState(props.initial);
+    const [count, setCount] = useState(initial);
 
     function handleClickLess(){
       if (count > 1){
@@ -13,7 +13,7 @@ function ItemCount(props) {
     }
 
     function handleClickPlus(){
-      if (count <= props.stock-1){
+      if (count <= stock-1){
         setCount(count+1)
       }
     }
