@@ -1,7 +1,6 @@
 import "./Item.css"
 
 export default function Item(props) {
-  console.log(props)
   return (
     <div className="card">
       <div className="cardImg">

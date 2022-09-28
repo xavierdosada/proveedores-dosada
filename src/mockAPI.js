@@ -44,3 +44,15 @@ export default function getData(){
         },2000)
     });
 }
+
+export function getSingleData(){
+    return new Promise((resolve,reject)=> {
+        setTimeout(() => {
+            if (resolve){
+                resolve(data[3]);
+            } else {
+                reject("Error al obtener datos")
+            }
+        },2000)
+    });
+}

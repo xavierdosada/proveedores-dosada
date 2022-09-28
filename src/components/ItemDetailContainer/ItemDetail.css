@@ -1,0 +1,32 @@
+.cardDetail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 600px;
+    height: 400px;
+    box-shadow: 1px 1px 5px black;
+    border-radius: 15px;
+}
+
+.cardImgDetail {
+    width: 330px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.cardImgDetail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.icon a {
+    color: black;
+}
