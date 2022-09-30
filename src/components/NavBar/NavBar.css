@@ -6,11 +6,16 @@
     background-color: orange;
 }
 
+h2 {
+    padding: 15px;
+}
+
 ul {
     display: flex;
 }
 
 li {
     list-style: none;
-    padding: 10px;
+    text-decoration: none;
+    padding: 20px;
 }

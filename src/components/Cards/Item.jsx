@@ -1,4 +1,5 @@
 import "./Item.css"
+import { Link } from 'react-router-dom';
 
 export default function Item(props) {
   return (
@@ -10,6 +11,11 @@ export default function Item(props) {
         <h3>{props.title}</h3>
         <p>{props.detail}</p>
         <h4>{props.price}</h4>
+        <Link to={`/details/${props.id}`}>
+        <button>
+          Detalles
+        </button>
+      </Link>
       </div>
     </div>
   );
