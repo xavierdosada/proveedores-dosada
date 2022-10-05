@@ -1,8 +1,17 @@
 import React from 'react'
 import "./ItemDetail.css"
 import ItemCount from '../ItemCount/ItemCount';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ItemDetail({data}) {
+ 
+    const [cartState, setCartState] = useState(true);
+
+    function addToCart(){
+        setCartState(false);
+    };
+
     return (
     <div className="singleCardDetail">
       <div className="singleCardImgDetail">
@@ -12,7 +21,10 @@ export default function ItemDetail({data}) {
       <h3>{data.title}</h3>
       <p>Contiene: {data.detail}</p>
       <h4>Precio: {data.price}</h4>
-      <ItemCount initial={1} stock={data.stock}/>
+      { cartState === false ? (
+      <Link to="/cart">{`Finalizar Compra`}</Link>
+      ) : (
+      <ItemCount initial={1} stock={data.stock} onAddToCart={addToCart}/>)}
       </div>
     </div>
   )
