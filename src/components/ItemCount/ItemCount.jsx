@@ -3,9 +3,8 @@ import { useState } from 'react'
 import "./ItemCount.css"
 
 function ItemCount({initial, stock, onAddToCart}) {
-
     const [count, setCount] = useState(initial);
-
+    
     function handleClickLess(){
       if (count > 1){
         setCount(count-1)

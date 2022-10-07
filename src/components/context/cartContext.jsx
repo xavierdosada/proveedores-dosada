@@ -7,16 +7,27 @@ export default function CartContextProvider( { children } ){
     const [cartItems, setCartItems] = useState([]);
 
     function addItem(data, count){
-        console.log("Desde context: ", "data: ", data, "count: ", count);
+        //creo una copia de cartItems
+        let backupCartItems = cartItems.map( item => item);
+        backupCartItems.push({...data, countItems: count});
+        setCartItems(backupCartItems);
+    }
+
+    function totalItemsCart(){
+        let totalItems = 0;
+        cartItems.forEach((item) => {
+            console.log("item.countItems: ",item.countItems)
+            totalItems += item.countItems;
+        })
+        return (totalItems);
     }
 
     return (
         //paso mi objeto value a los hijos.
-        <cartCtxt.Provider value={{ cartItems, addItem }}>
+        <cartCtxt.Provider value={{ cartItems, addItem, totalItemsCart }}>
             {children}
         </cartCtxt.Provider>
     )   
 }
-
 //exporto mi createContext
 export { cartCtxt }

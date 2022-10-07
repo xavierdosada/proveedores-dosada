@@ -3,15 +3,14 @@ import "./ItemDetail.css"
 import ItemCount from '../ItemCount/ItemCount';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {cartCtxt} from "../context/cartContext";
+import { cartCtxt } from "../context/cartContext";
 
 export default function ItemDetail({data}) {
- 
     const [cartState, setCartState] = useState(true);
     //me conecto al context con useContext
     const { addItem } = useContext(cartCtxt);
 
-    function addToCart(data, count){
+    function addToCart(count){
         addItem(data, count);
         setCartState(false);
     };

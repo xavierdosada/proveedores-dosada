@@ -96,7 +96,6 @@ export default function getData(){
 export function getDataFilter(category){
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log("category: ",category)
             let itemFilter = data.filter((item) => {
                 return item.category === category;
             });
@@ -107,7 +106,6 @@ export function getDataFilter(category){
 }
 
 export function getSingleData(itemId){
-    console.log(itemId)
     return new Promise((resolve,reject)=> {
         setTimeout(() => {
             let itemFind = data.find((item) => {

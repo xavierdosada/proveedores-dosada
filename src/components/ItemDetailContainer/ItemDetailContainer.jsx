@@ -9,7 +9,6 @@ export default function ItemDetailContainer() {
     let [data, setData] = useState([]);
 
     const { itemid } = useParams();
-    console.log("params: ", itemid);
   
     useEffect(() => {
     getSingleData(itemid).then( respuestaDatos => setData(respuestaDatos));
