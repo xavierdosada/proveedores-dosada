@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 function ItemListContainer(props) {
   let [data, setData] = useState([]);
-  
+  console.log("data del itemListContainer: ", data);
   const { category } = useParams();
   useEffect(() => {
     if (category === undefined){
@@ -20,7 +20,7 @@ function ItemListContainer(props) {
     <div>
         <h1>{props.greeting}</h1>
         <div>
-          <ItemList data={data}/>
+          <ItemList item={data}/>
         </div>
     </div>
   );
