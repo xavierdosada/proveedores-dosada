@@ -22,9 +22,18 @@ export default function CartContextProvider( { children } ){
         return (totalItems);
     }
 
+    function totalPrice(){
+        let totalPrice = 0;
+        cartItems.forEach((item) => {
+            console.log("price: ", item.price)
+            totalPrice += item.countItems * item.price;
+        })
+        return (totalPrice);
+    }
+
     return (
         //paso mi objeto value a los hijos.
-        <cartCtxt.Provider value={{ cartItems, addItem, totalItemsCart }}>
+        <cartCtxt.Provider value={{ cartItems, addItem, totalItemsCart, totalPrice }}>
             {children}
         </cartCtxt.Provider>
     )   

@@ -21,7 +21,7 @@ function NavBar() {
           </li>
         </ul>
         <div className="icon">
-          <a href="products"> < CardWidget /> </a>
+          <Link to="cart"> < CardWidget /> </Link>
         </div>
     </nav>
   );
