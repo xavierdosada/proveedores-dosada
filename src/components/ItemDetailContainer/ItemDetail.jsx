@@ -3,7 +3,7 @@ import "./ItemDetail.css"
 import ItemCount from '../ItemCount/ItemCount';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { cartCtxt } from "../context/cartContext";
+import { cartCtxt } from "../context/CartContext";
 
 export default function ItemDetail({data}) {
     const [cartState, setCartState] = useState(true);

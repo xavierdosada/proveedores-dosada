@@ -5,7 +5,9 @@ import { useParams } from 'react-router-dom';
 
 function ItemListContainer(props) {
   let [data, setData] = useState([]);
+  console.log("props: ",props)
   const { category } = useParams();
+  console.log("category: ",category)
   useEffect(() => {
     if (category === undefined){
       getData().then( respuestaDatos => setData(respuestaDatos));

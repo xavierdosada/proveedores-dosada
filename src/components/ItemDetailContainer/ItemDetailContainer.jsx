@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getSingleData } from '../../mockAPI';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
+import CartView from '../CartView/CartView';
 
 
 export default function ItemDetailContainer() {
@@ -12,7 +13,7 @@ export default function ItemDetailContainer() {
   
     useEffect(() => {
     getSingleData(itemid).then( respuestaDatos => setData(respuestaDatos));
-  },[itemid ]);
+  },[itemid]);
 
   return (
     <div>

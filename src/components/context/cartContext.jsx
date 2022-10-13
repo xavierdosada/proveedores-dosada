@@ -8,32 +8,52 @@ export default function CartContextProvider( { children } ){
 
     function addItem(data, count){
         //creo una copia de cartItems
-        let backupCartItems = cartItems.map( item => item);
-        backupCartItems.push({...data, countItems: count});
+        if (isInCart(data.id)) {
+            
+            let backupCartItems = cartItems.map((itemCart) => {
+                if(itemCart.id === data.id){
+                    itemCart.countItems += count;
+                    return itemCart
+                } else return itemCart
+                });
+
+                setCartItems(backupCartItems);
+        } else {
+            let backupCartItems = cartItems.map( item => item);
+            backupCartItems.push({...data, countItems: count});
+            setCartItems(backupCartItems);
+        }
+    }
+
+    function removeItem(data){
+        let backupCartItems = cartItems.filter(item => item.id !== data.id)
         setCartItems(backupCartItems);
     }
 
     function totalItemsCart(){
         let totalItems = 0;
         cartItems.forEach((item) => {
-            console.log("item.countItems: ",item.countItems)
             totalItems += item.countItems;
         })
-        return (totalItems);
+        return totalItems;
     }
 
     function totalPrice(){
         let totalPrice = 0;
         cartItems.forEach((item) => {
-            console.log("price: ", item.price)
             totalPrice += item.countItems * item.price;
         })
-        return (totalPrice);
+        return totalPrice;
+    }
+
+    function isInCart(id){
+        let cartFound = cartItems.some((item) => item.id === id)
+        return cartFound;
     }
 
     return (
         //paso mi objeto value a los hijos.
-        <cartCtxt.Provider value={{ cartItems, addItem, totalItemsCart, totalPrice }}>
+        <cartCtxt.Provider value={{ cartItems, addItem, removeItem, totalItemsCart, totalPrice, isInCart}}>
             {children}
         </cartCtxt.Provider>
     )   

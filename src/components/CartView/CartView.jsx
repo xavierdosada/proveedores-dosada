@@ -1,27 +1,33 @@
 import React from 'react'
-import { useContext } from 'react';
-import { cartCtxt } from '../context/cartContext';
-import { totalPrice } from '../context/cartContext';
+import './CartView.css'
+import { useContext, useState } from 'react';
+import { cartCtxt } from '../context/CartContext';
+import { totalPrice, removeItem } from '../context/CartContext';
+import { Link } from 'react-router-dom'
 
-function CartView() {
+function CartView() {   
     const context = useContext(cartCtxt);
-    const { cartItems } = context; //destructuring
-    const { totalPrice } = useContext(cartCtxt);
-    {console.log("cart: ", cartItems)}
+    const { cartItems, totalPrice, removeItem } = context; //destructuring
 
-    return (    
-    <div>
-        {cartItems.map((item) => (
+        return cartItems.length ? (    
             <div>
-                <h3>{item.title}</h3>
-                <p>{`$ ${item.price} x unid`}</p>
-                <span>{`Unidades: ${item.countItems}`}</span>
-                <h3>{`Sub-Total: $ ${item.countItems * item.price}`}</h3>
+                {cartItems.map((item) => (
+                    <div className='CartViewContainer'>
+                        <h3>{item.title}</h3>
+                        <p>{`$ ${item.price} x unid`}</p>
+                        <span>{`Unidades: ${item.countItems}`}</span>
+                        <h3>{`Sub-Total: $ ${item.countItems * item.price}`}</h3>
+                        <button onClick={() => {removeItem(item)}}> Eliminar del Carrito</button>
+                    </div>
+                ))}
+                <h3>{`Total: $${totalPrice()}`}</h3> 
             </div>
-        ))}
-        <h3>{`Total: ${totalPrice()}`}</h3>
-    </div>
-    );
-}
+        ) : (
+            <div>
+            <h3>Aún no tiene Items en el carrito</h3> 
+            <Link to="/"> Volver a Productos </Link>
+            </div>
+        )
+    }  
 
 export default CartView
