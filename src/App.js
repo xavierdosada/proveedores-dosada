@@ -6,7 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartContextProvider from './components/context/CartContext';
 import CartView from './components/CartView/CartView';
 
+import app from "./services/firebase";
+
 function App() {
+  console.log("Firebase: ", app)
   return (
     <CartContextProvider>
       <div className="App">
