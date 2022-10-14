@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import getData, { getDataFilter } from "../../src/mockAPI"
+import { getData, getDataFilter } from "../services/firestore"
 import ItemList from "./ItemList"
 import { useParams } from 'react-router-dom';
 

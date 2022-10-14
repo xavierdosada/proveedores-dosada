@@ -1,10 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import { getSingleData } from '../../mockAPI';
+import { getSingleData } from '../../services/firestore';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
-import CartView from '../CartView/CartView';
-
 
 export default function ItemDetailContainer() {
     let [data, setData] = useState([]);
