@@ -3,12 +3,13 @@ import './CartView.css'
 import { useContext, useState } from 'react';
 import { cartCtxt } from '../context/CartContext';
 // import { totalPrice, removeItem } from '../context/CartContext';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { newbuyOrder } from '../../services/firestore';
 
 function CartView() {   
     const context = useContext(cartCtxt);
     const { cartItems, totalPrice, removeItem } = context; //destructuring
+    const navigate = useNavigate()
 
     function handleCheckOut(){
         //{ buyer: {name, phone, email}, items: [{id, title, price}], total}
@@ -22,15 +23,15 @@ function CartView() {
             total: totalPrice()
         }
 
-        newbuyOrder(buyOrderData).then( respuesta => {
-            alert(respuesta)
+        newbuyOrder(buyOrderData).then( orderid => {
+            navigate(`/checkout/${orderid}`)
         });
     }
     
         return cartItems.length ? (    
             <div>
                 {cartItems.map((item) => (
-                    <div className='CartViewContainer'>
+                    <div key={item.id} className='CartViewContainer'>
                         <h3>{item.title}</h3>
                         <p>{`$ ${item.price} x unid`}</p>
                         <span>{`Unidades: ${item.countItems}`}</span>
