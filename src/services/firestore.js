@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, getDoc, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, getDoc, query, where, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyACd9hSrzXn1N04tEsVl_pobBeq6sXoVYI",
@@ -42,6 +42,12 @@ export async function getDataFilter(catParams){
     return dataCategoryFormat;
   })
   return dataCategory;
+}
+
+export async function newbuyOrder(buyOrderData){
+  const collectionRef = collection(firestore, "orders");
+  let respuesta = await addDoc(collectionRef, buyOrderData);
+  return(respuesta.id)
 }
 
 export default firestore
