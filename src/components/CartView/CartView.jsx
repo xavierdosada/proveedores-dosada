@@ -31,12 +31,17 @@ function CartView() {
         return cartItems.length ? (    
             <div>
                 {cartItems.map((item) => (
-                    <div key={item.id} className='CartViewContainer'>
-                        <h3>{item.title}</h3>
-                        <p>{`$ ${item.price} x unid`}</p>
-                        <span>{`Unidades: ${item.countItems}`}</span>
-                        <h3>{`Sub-Total: $ ${item.countItems * item.price}`}</h3>
-                        <button onClick={() => {removeItem(item)}}> Eliminar del Carrito</button>
+                    <div key={item.id} className='CartViewItemsContainer'>
+                        <div>
+                            <h3>{item.title}</h3>
+                            <img className='boxImage' src={item.image} alt="" />
+                        </div>
+                        <div>
+                            <p>{`$ ${item.price} x unid`}</p>
+                            <span>{`Unidades: ${item.countItems}`}</span>
+                            <h3>{`Sub-Total: $ ${item.countItems * item.price}`}</h3>
+                            <button onClick={() => {removeItem(item)}}> Eliminar del Carrito</button>
+                        </div>
                     </div>
                 ))}
                 <h3>{`Total: $${totalPrice()}`}</h3> 
